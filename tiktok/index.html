@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RPT Replies - TikTok connected</title>
+<style>
+  body{font:16px/1.6 system-ui,-apple-system,sans-serif;max-width:680px;margin:40px auto;padding:0 16px;color:#1a1a1a;background:#fff}
+  code{display:block;word-break:break-all;background:#f3f3f3;padding:12px;border-radius:8px}
+  @media (prefers-color-scheme:dark){body{color:#eee;background:#111} code{background:#222}}
+</style>
+</head>
+<body>
+<h1>RPT Replies</h1>
+<p id="msg">This page finishes connecting the Real Plot Twists TikTok account.</p>
+<code id="code" hidden></code>
+<script>
+  // TikTok sends the one-time login code here; it is useless without the app secret, which only our server has.
+  const q = new URLSearchParams(location.search), c = q.get("auth_code") || q.get("code"), err = q.get("error");
+  const m = document.getElementById("msg"), box = document.getElementById("code");
+  if (c) { m.textContent = "TikTok login worked. Copy this code back to the setup (it expires in a few minutes):"; box.textContent = c; box.hidden = false; }
+  else if (err) { m.textContent = "TikTok said: " + err + " " + (q.get("error_description") || ""); }
+</script>
+<p><a href="../privacy.html">Privacy policy</a></p>
+</body>
+</html>
